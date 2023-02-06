@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="UTF-8" />
+      <link  rel="stylesheet" href="Calcul.css">
+      <script language="javascript">
+         function operation(op){
+            nombre1=document.calc.nbr1.value;
+            nombre2=document.calc.nbr2.value;
+            switch(op){
+               case "addition": resultat=parseFloat(nombre1)+parseFloat(nombre2); break;
+               case "soustraction": resultat=nombre1-nombre2; break;
+               case "multiplication": resultat=nombre1*nombre2; break;
+               case "division": {
+                  if(nombre2!=0)
+                     resultat=nombre1/nombre2;
+                  else
+                     resultat="Erreur!";
+               }
+            }
+            document.calc.res.value=resultat;
+         }
+         function errorMessage() {
+        var error = document.getElementById("error")
+        if (isNaN(document.getElementById("number").value))
+        {
+             
+            error.textContent = "Entrer un nombre Valide"
+         
+        } else {
+            error.textContent = ""
+            
+        }
+    }
+
+
+      </script>
+   </head>
+   <body>   
+      <h1> </h1>
+      <form name="calc">   
+         <input type="text" name="nbr1" id="number" placeholder ="entrer le premier nombre"/><span id="error"></span><br /><br>
+         <input type="text" name="nbr2" id="number" placeholder ="entrer le second nombre" /><span id="error"></span><br /><br>
+         <input type="button" value="+" onClick="operation('addition')" onclick="errorMessage()" />
+         <input type="button" value="-" onClick="operation('soustraction')" onclick="errorMessage()" />
+         <input type="button" value="*" onClick="operation('multiplication')" onclick="errorMessage()" />
+         <input type="button" value="/" onClick="operation('division')" onclick="errorMessage()" />
+         <br /><br>
+         <input type="text" id="n3" name="res" />
+      </form>
+   </body>
+</html>
